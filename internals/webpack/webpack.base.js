@@ -8,7 +8,7 @@ const plugins = [
   }),
 ];
 
-module.exports = options => ({
+module.exports = (options) => ({
   mode: options.mode,
   entry: [path.join(process.cwd(), 'src/index.js')],
   module: {
