@@ -4,6 +4,6 @@
 
 **KanaBuddy** is a web app you can use to hone in your kana typing and identifying skills.
 
-![App](https://github.com/HajimeNoJosh/kanabuddy/blob/master/assets/App.jpg)
+![App](./assets/App.jpg)
 
 [View project in Zeplin](https://scene.zeplin.io/project/5e820c82d0b29a1419f5340d)
