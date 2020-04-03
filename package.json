@@ -7,18 +7,14 @@
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.3",
     "node-sass": "^4.13.1",
-    "open-cli": "^6.0.1",
-    "concurrently": "^5.1.0",
     "sass-loader": "^8.0.2",
-    "sleep-ms": "^2.0.1",
     "style-loader": "^1.1.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "start": "npm run open",
-    "open": "concurrently \"webpack-dev-server --config internals/webpack/webpack.dev.js\" \"sleepms 1000 && open-cli http://localhost:3000\"",
+    "start": "npx webpack-dev-server --config internals/webpack/webpack.dev.js --open",
     "start:prod": "webpack-dev-server --config internals/webpack/webpack.prod.js",
     "build": "webpack --config internals/webpack/webpack.prod.js"
   },
