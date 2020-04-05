@@ -3,6 +3,10 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.3",
@@ -16,7 +20,9 @@
   "scripts": {
     "start": "npx webpack-dev-server --config internals/webpack/webpack.dev.js --open",
     "start:prod": "webpack-dev-server --config internals/webpack/webpack.prod.js",
-    "build": "webpack --config internals/webpack/webpack.prod.js"
+    "build": "webpack --config internals/webpack/webpack.prod.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
