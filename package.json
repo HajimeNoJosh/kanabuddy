@@ -14,7 +14,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "start": "webpack-dev-server --config internals/webpack/webpack.dev.js",
+    "start": "npx webpack-dev-server --config internals/webpack/webpack.dev.js --open",
     "start:prod": "webpack-dev-server --config internals/webpack/webpack.prod.js",
     "build": "webpack --config internals/webpack/webpack.prod.js"
   },
