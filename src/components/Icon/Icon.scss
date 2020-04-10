@@ -1,0 +1,17 @@
+@import '../../sass/utils/variables';
+
+.icon {
+  display: inline-block;
+  height: 3.2rem;
+  width: 3.2rem;
+  fill: $color--dusk;
+
+  &.small {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+
+  & path {
+    fill: inherit;
+  }
+}
