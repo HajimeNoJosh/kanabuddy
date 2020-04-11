@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 import './Icon.scss';
 
 import GitHub from '../../assets/svg/github.svg';
@@ -21,9 +24,23 @@ function getIcon(name) {
   }
 }
 
-export const Icon = ({ name }) => (
-  <span className="icon">
+export const Icon = ({ name, color, size }) => (
+  <span className={classnames(
+    'icon',
+    `icon--${color}`,
+    `icon--${size}`
+  )}>
     {getIcon(name)}
   </span>
 );
 
+Icon.propTypes = {
+  name: PropTypes.oneOf(['github', 'play', 'pause', 'restart']),
+  color: PropTypes.oneOf(['dusk', 'white']),
+  size: PropTypes.oneOf('xs','sm')
+};
+
+Icon.defaultProps = {
+  color: 'dusk',
+  size: 'sm'
+};

@@ -2,16 +2,26 @@
 
 .icon {
   display: inline-block;
-  height: 3.2rem;
-  width: 3.2rem;
-  fill: $color--dusk;
 
-  &.small {
+  & path {
+    fill: inherit;
+  }
+
+  &--sm {
+    height: 3.2rem;
+    width: 3.2rem;
+  }
+
+  &--xs {
     height: 1.6rem;
     width: 1.6rem;
   }
 
-  & path {
-    fill: inherit;
+  &--dusk {
+    fill: $color--dusk;
+  }
+
+  &--white {
+    fill: $color--white;
   }
 }
