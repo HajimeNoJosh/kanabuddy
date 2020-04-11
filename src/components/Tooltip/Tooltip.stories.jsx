@@ -1,20 +1,24 @@
 import React from 'react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 
 import Tooltip from './Tooltip.jsx';
 
 export default {
   title: 'Tooltip',
   component: Tooltip,
+  decorators: [withKnobs],
 };
 
-export const oneLine = () => (
-  <Tooltip>
-    <span style={{ color: '#df677b' }}>Ha</span>
-  </Tooltip>
-);
+export const WithText = () => {
+  const tooltipText = text('Text', 'ha');
 
-export const twoLine = () => (
-  <Tooltip>
-    <span style={{ color: '#686868' }}>How do you do?</span>
-  </Tooltip>
-);
+  return (
+    <Tooltip>
+      <span style={{ 
+        color: '#df677b', 
+        fontSize: '2rem',
+        fontWeight: '700'
+      }}>{tooltipText}</span>
+    </Tooltip>
+  );
+};
