@@ -11,10 +11,13 @@ const plugins = [
 module.exports = (options) => ({
   mode: options.mode,
   entry: [path.join(process.cwd(), 'src/index.js')],
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js(x)*$/,
         exclude: /node_modules/,
         use: [
           {
@@ -32,6 +35,21 @@ module.exports = (options) => ({
           // Compiles Sass to CSS
           'sass-loader',
         ],
+      },
+      {
+        test: /\.svg$/,
+        // Path for all SVG files
+        include: path.join(process.cwd(), 'src/assets/svg'),
+        use: [
+          {
+            // Converts SVG to React Components
+            loader: '@svgr/webpack',
+            options: {
+              // Exclude height and width attributes
+              dimensions: false
+            }
+          }
+        ]
       }
     ],
   },
