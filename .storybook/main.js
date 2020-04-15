@@ -7,7 +7,8 @@ module.exports = {
   stories: ['../src/components/**/*.stories.jsx'],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-knobs'
+    '@storybook/addon-knobs',
+    '@storybook/addon-a11y'
   ],
   webpackFinal: async config => {
     // Exclude Storybook's default file-loader rule from applying to
