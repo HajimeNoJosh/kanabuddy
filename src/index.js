@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './sass/main.scss';
-import Tooltip from './components/Tooltip/Tooltip';
+import { Tooltip, Icon } from './components';
 
-const App = () => <div> Hello World! </div>;
+const App = () => (
+  <div>
+    <Tooltip>Hello World!!</Tooltip>
+    <Icon name="github" />
+  </div>
+);
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
