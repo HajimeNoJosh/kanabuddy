@@ -1,14 +1,16 @@
 @import '../../sass/utils/variables';
 
 .tooltip {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   position: relative;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: $color--white;
   border: 2px solid $color--lavendar;
   border-radius: 0.4rem;
   width: auto;
+  word-wrap: break-word;
   max-width: 13.5rem;
 
   &::after {
@@ -23,5 +25,10 @@
     border-bottom: inherit;
     border-left: inherit;
     transform: rotate(-45deg);
+  }
+
+  &__position {
+    position: absolute;
+    top: -6.7rem;
   }
 }

@@ -10,7 +10,7 @@ import Start from '../../assets/svg/start.svg';
 import Restart from '../../assets/svg/restart.svg';
 
 function getIcon(name) {
-  switch(name) {
+  switch (name) {
     case 'github':
       return <GitHub />;
     case 'pause':
@@ -25,11 +25,7 @@ function getIcon(name) {
 }
 
 export const Icon = ({ name, color, size }) => (
-  <span className={classnames(
-    'icon',
-    `icon--${color}`,
-    `icon--${size}`
-  )}>
+  <span className={classnames('icon', `icon--${color}`, `icon--${size}`)}>
     {getIcon(name)}
   </span>
 );
@@ -37,10 +33,10 @@ export const Icon = ({ name, color, size }) => (
 Icon.propTypes = {
   name: PropTypes.oneOf(['github', 'play', 'pause', 'restart']),
   color: PropTypes.oneOf(['dusk', 'white']),
-  size: PropTypes.oneOf('xs','sm')
+  size: PropTypes.oneOf('xs', 'sm'),
 };
 
 Icon.defaultProps = {
   color: 'dusk',
-  size: 'sm'
+  size: 'sm',
 };
