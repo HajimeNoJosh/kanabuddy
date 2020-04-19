@@ -1,8 +1,8 @@
-const prettierOptions = require('./prettier.config');
+const prettierOptions = require('./.prettierrc.js');
 
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
   plugins: ['prettier', 'react', 'jsx-a11y'],
   env: {
     browser: true,
@@ -33,7 +33,7 @@ module.exports = {
       2,
       2,
       {
-        SwitchCase: 1
+        SwitchCase: 1,
       },
     ],
     'jsx-a11y/aria-props': 2,
@@ -60,8 +60,8 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      "node": {
-        "paths": ["src"]
+      node: {
+        paths: ['src'],
       },
     },
   },

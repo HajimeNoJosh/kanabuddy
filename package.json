@@ -1,25 +1,13 @@
 {
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
-    "@storybook/addon-a11y": "^5.3.18",
-    "@storybook/addon-knobs": "^5.3.18",
-    "@storybook/addon-links": "^5.3.18",
-    "@storybook/addons": "^5.3.18",
-    "@storybook/react": "^5.3.18",
-    "@svgr/webpack": "^5.3.1",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^3.4.2",
-    "html-webpack-plugin": "^4.0.3",
-    "node-sass": "^4.13.1",
-    "regenerator-runtime": "^0.13.5",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.1.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
-  },
+  "name": "KanaBuddy",
+  "author": "Josh Martin <joshuah.m.martin@gmail.com> (https://joshmartin.work)",
+  "contributors": [
+    "Pauline Masigla <pauline.masigla@gmail.com>"
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "A typing game to test one's Japanese hiragana typing skills",
+  "repository": "github:HajimeNoJosh/kanabuddy",
   "scripts": {
     "start": "npx webpack-dev-server --config internals/webpack/webpack.dev.js --open",
     "start:prod": "webpack-dev-server --config internals/webpack/webpack.prod.js",
@@ -34,5 +22,55 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-transition-group": "^4.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-a11y": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@svgr/webpack": "^5.3.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "html-webpack-plugin": "^4.0.3",
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "node-sass": "^4.13.1",
+    "prettier": "2.0.4",
+    "regenerator-runtime": "^0.13.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "stylelint": "^13.3.2",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.css": "stylelint",
+    "*.scss": "stylelint --syntax=scss"
   }
 }
