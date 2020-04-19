@@ -2,7 +2,7 @@ const prettierOptions = require('./prettier.config');
 
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
   plugins: ['prettier', 'react', 'jsx-a11y'],
   env: {
     browser: true,
