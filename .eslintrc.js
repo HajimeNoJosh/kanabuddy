@@ -1,4 +1,4 @@
-const prettierOptions = require('./prettier.config');
+const prettierOptions = require('./.prettierrc.js');
 
 module.exports = {
   parser: 'babel-eslint',
@@ -33,7 +33,7 @@ module.exports = {
       2,
       2,
       {
-        SwitchCase: 1
+        SwitchCase: 1,
       },
     ],
     'jsx-a11y/aria-props': 2,
@@ -60,8 +60,8 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      "node": {
-        "paths": ["src"]
+      node: {
+        paths: ['src'],
       },
     },
   },
