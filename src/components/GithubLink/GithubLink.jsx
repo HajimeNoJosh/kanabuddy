@@ -5,10 +5,10 @@ import { CSSTransition } from 'react-transition-group';
 
 import './GithubLink.scss';
 
-const GithubLink = ({ name, color, size, className }) => {
+const GithubLink = () => {
   const [isShown, setIsShown] = useState(false);
-  const setTooltipVisibility = (boolean) => {
-    setIsShown(boolean);
+  const setTooltipVisibility = (isVisible) => {
+    setIsShown(isVisible);
   };
 
   return (
@@ -16,11 +16,11 @@ const GithubLink = ({ name, color, size, className }) => {
       <CSSTransition
         in={isShown}
         timeout={800}
-        classNames="alert"
+        classNames="github__tooltip"
         unmountOnExit
         onExited={() => setTooltipVisibility(false)}
       >
-        <Tooltip className={className}>
+        <Tooltip className={'tooltip__position'}>
           <span
             style={{
               color: '#46466d',
@@ -42,7 +42,7 @@ const GithubLink = ({ name, color, size, className }) => {
         className="github__link"
         aria-label="github-link"
       >
-        <Icon name={name} color={color} size={size} />
+        <Icon name={'github'} color={'dusk'} size={'sm'} />
       </a>
     </div>
   );

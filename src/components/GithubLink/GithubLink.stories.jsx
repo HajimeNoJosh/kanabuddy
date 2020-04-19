@@ -16,12 +16,7 @@ export const Github = () => {
         left: '5rem',
       }}
     >
-      <GithubLink
-        name={'github'}
-        color={'dusk'}
-        size={'sm'}
-        className={'tooltip__position'}
-      />
+      <GithubLink />
     </div>
   );
 };

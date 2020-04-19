@@ -7,8 +7,26 @@
   flex-direction: column;
   position: relative;
 
+  &__tooltip {
+    &-enter {
+      opacity: 0;
+    }
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms;
+    }
+    &-exit {
+      opacity: 1;
+    }
+    &-exit-active {
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+  }
+
   &__link {
     transition: all 300ms;
+    filter: opacity(100%);
     &:hover {
       filter: opacity(80%);
     }
@@ -19,23 +37,5 @@
 
   &:hover {
     cursor: pointer;
-  }
-}
-
-.alert {
-  &-enter {
-    opacity: 0;
-  }
-  &-enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 300ms;
-  }
-  &-exit {
-    opacity: 1;
-  }
-  &-exit-active {
-    opacity: 0;
-    transition: opacity 300ms;
   }
 }
