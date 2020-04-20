@@ -7,16 +7,15 @@ export default {
   component: GithubLink,
 };
 
-export const Github = () => {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        top: '10rem',
-        left: '5rem',
-      }}
-    >
-      <GithubLink />
-    </div>
-  );
-};
+export const Default = () => (
+  <div
+    style={{
+      position: 'relative',
+      top: '10rem',
+      left: '5rem',
+      display: 'inline-block',
+    }}
+  >
+    <GithubLink />
+  </div>
+);

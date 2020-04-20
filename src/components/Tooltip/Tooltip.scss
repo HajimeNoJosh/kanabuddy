@@ -1,34 +1,33 @@
 @import '../../sass/utils/variables';
 
 .tooltip {
-  display: inline-flex;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-  padding: 1rem;
   background-color: $color--white;
   border: 2px solid $color--lavendar;
   border-radius: 0.4rem;
+  display: inline-flex;
+  justify-content: center;
+  max-width: 13.5rem;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
   width: auto;
   word-wrap: break-word;
-  max-width: 13.5rem;
 
   &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -1rem;
-    left: calc(50% - 1rem);
-    height: 1.5rem;
-    width: 1.5rem;
     background-color: inherit;
     border-bottom: inherit;
     border-left: inherit;
+    bottom: -0.8rem;
+    content: '';
+    display: block;
+    height: 1rem;
+    position: absolute;
     transform: rotate(-45deg);
+    width: 1rem;
   }
 
   &__position {
     position: absolute;
-    top: -6.7rem;
+    top: -6.6rem;
   }
 }
