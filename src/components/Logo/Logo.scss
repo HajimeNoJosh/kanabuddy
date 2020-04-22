@@ -1,0 +1,24 @@
+@import '../../sass/utils/variables';
+
+.logo {
+  display: block;
+
+  &--md {
+    height: 4.1rem;
+    width: 19.7rem;
+  }
+
+  &--lg {
+    height: 5.4rem;
+    width: 33.5rem;
+  }
+
+  &--white {
+    fill: $color--white;
+
+    g,
+    path {
+      fill: inherit;
+    }
+  }
+}

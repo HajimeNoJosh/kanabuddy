@@ -5,7 +5,7 @@ import { Icon } from './Icon';
 export default {
   title: 'Icon',
   component: Icon,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const Default = () => {
@@ -13,23 +13,21 @@ export const Default = () => {
     github: 'github',
     pause: 'pause',
     start: 'start',
-    restart: 'restart'
+    restart: 'restart',
   };
   const name = options('Name', nameSelect, 'github', { display: 'select' });
 
   const colorSelect = {
     dusk: 'dusk',
-    white: 'white'
+    white: 'white',
   };
   const color = options('Color', colorSelect, 'dusk', { display: 'select' });
 
   const sizeSelect = {
     sm: 'sm',
-    xs: 'xs'
+    xs: 'xs',
   };
   const size = options('Size', sizeSelect, 'sm', { display: 'select' });
 
-  return (
-    <Icon name={name} color={color} size={size} />
-  );
+  return <Icon name={name} color={color} size={size} />;
 };
