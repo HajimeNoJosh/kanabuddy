@@ -4,4 +4,7 @@ module.exports = {
     'stylelint-config-sass-guidelines',
     'stylelint-prettier/recommended',
   ],
+  rules: {
+    'max-nesting-depth': 2,
+  },
 };

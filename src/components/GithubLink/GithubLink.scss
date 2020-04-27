@@ -1,10 +1,10 @@
 @import '../../sass/utils/variables';
 
 .github {
-  display: inline-flex;
-  justify-content: center;
   align-items: center;
+  display: inline-flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
 
   &__tooltip {
@@ -25,14 +25,20 @@
   }
 
   &__link {
-    transition: all 300ms;
     filter: opacity(100%);
+    transition: all 300ms;
     &:hover {
       filter: opacity(80%);
     }
     &:focus {
       filter: opacity(80%);
     }
+  }
+
+  &__text {
+    @include text-xs;
+    color: $color--dusk;
+    font-weight: $font-weight--bold;
   }
 
   &:hover {

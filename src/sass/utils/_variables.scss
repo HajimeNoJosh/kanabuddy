@@ -10,3 +10,69 @@ $color--paua: #18184c;
 $color--teal: #39adb7;
 $color--white: #fff;
 $color--lavendar: #e9e9ef;
+
+$font-family--primary: 'Rubik', Helvetica, Arial, sans-serif;
+$font-family--secondary: 'Kosugi Maru', 'ヒラギノ角ゴ Pro W3',
+  'Hiragino Kaku Gothic Pro', Osaka, メイリオ, Meiryo, 'ＭＳ Ｐゴシック',
+  'MS PGothic', 'ＭＳ ゴシック', 'MS Gothic', 'Noto Sans CJK JP', TakaoPGothic,
+  sans-serif;
+/* Default JP font taken from https://gist.github.com/prantlf/fbd12acc69a022edd589dea48dafe3f8 */
+
+$font-weight--regular: 400;
+$font-weight--medium: 500;
+$font-weight--bold: 700;
+
+$font-height--xs: 1;
+$font-height--sm: 1.2;
+$font-height--md: 1.5;
+
+$font-size--xs: 1.6rem;
+$font-size--sm: 2.4rem;
+$font-size--md: 3.4rem;
+$font-size--lg: 4.8rem;
+$font-size--xl: 6rem;
+$font-size--xxl: 9.6rem;
+
+$font-space--xs: 0.05rem;
+$font-space--sm: 0;
+$font-space--md: 0.02rem;
+$font-space--lg: 0;
+$font-space--xl: -0.05rem;
+$font-space--xxl: -0.15rem;
+
+$space--xs: 1rem;
+$space--sm: 2rem;
+$space--md: 4rem;
+$space--lg: 6rem;
+$space--xl: 8rem;
+$space--xxl: 18rem;
+
+@mixin text-xs {
+  font-size: $font-size--xs;
+  letter-spacing: $font-space--xs;
+}
+
+@mixin text-sm {
+  font-size: $font-size--sm;
+  letter-spacing: $font-space--sm;
+}
+
+@mixin text-md {
+  font-size: $font-size--md;
+  letter-spacing: $font-space--md;
+}
+
+@mixin text-lg {
+  font-size: $font-size--lg;
+  letter-spacing: $font-space--lg;
+}
+
+@mixin text-xl {
+  font-size: $font-size--xl;
+  letter-spacing: $font-space--xl;
+}
+
+@mixin text-xxl {
+  font-size: $font-size--xxl;
+  letter-spacing: $font-space--xxl;
+}

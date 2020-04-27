@@ -1,7 +1,7 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, object } from '@storybook/addon-knobs';
 
-import { Tooltip } from './Tooltip.jsx';
+import { Tooltip } from './Tooltip';
 
 export default {
   title: 'Tooltip',
@@ -10,15 +10,15 @@ export default {
 };
 
 export const WithText = () => {
-  const tooltipText = text('Text', 'ha');
+  const tooltipText = text('Text', 'Hello');
+  const tooltipTextStyles = object('Text Styles', {
+    fontWeight: 700,
+    color: '#df677b',
+  });
 
   return (
     <Tooltip>
-      <span style={{
-        color: '#df677b',
-        fontSize: '2rem',
-        fontWeight: '700'
-      }}>{tooltipText}</span>
+      <span style={tooltipTextStyles}>{tooltipText}</span>
     </Tooltip>
   );
 };

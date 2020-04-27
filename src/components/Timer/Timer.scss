@@ -2,15 +2,16 @@
 
 .timer {
   color: $color--dusk;
+  line-height: $font-height--sm;
   text-align: right;
 
   &__label {
-    font-size: 2rem;
-    font-weight: 700;
+    @include text-sm;
+    font-weight: $font-weight--bold;
   }
 
   &__digits {
-    font-size: 6rem;
-    font-weight: 300;
+    @include text-xl;
+    font-weight: $font-weight--regular;
   }
 }
