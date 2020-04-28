@@ -1,10 +1,13 @@
 @import './utils/variables';
 
 html {
-    font-size: 62.5%; // 1 rem = 10px; 10px/16px - 62.5%
+  font-size: 62.5%; // 1 rem = 10px; 10px/16px - 62.5%
 }
 
 body {
-    color: $color--teal;
-    font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  @include text-sm;
+  font-family: $font-family--primary;
+  font-weight: $font-weight--medium;
+  line-height: $font-height--xs;
+  color: $color--dusk;
 }

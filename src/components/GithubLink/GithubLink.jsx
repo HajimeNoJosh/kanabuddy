@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../Icon/Icon';
 import { Tooltip } from '../Tooltip/Tooltip';
-import { CSSTransition } from 'react-transition-group';
 
 import './GithubLink.scss';
 
-const GithubLink = () => {
-  const [isShown, setIsShown] = useState(false);
+const GithubLink = ({ isTooltipShown }) => {
+  const [isShown, setIsShown] = useState(isTooltipShown);
   const setTooltipVisibility = (isVisible) => {
-    setIsShown(isVisible);
+    if (!isTooltipShown) {
+      setIsShown(isVisible);
+    }
   };
+
+  useEffect(() => {
+    setIsShown(isTooltipShown);
+  }, [isTooltipShown]);
 
   return (
     <div className="github">
@@ -20,16 +27,8 @@ const GithubLink = () => {
         unmountOnExit
         onExited={() => setTooltipVisibility(false)}
       >
-        <Tooltip className={'tooltip__position'}>
-          <span
-            style={{
-              color: '#46466d',
-              fontSize: '2rem',
-              fontWeight: 'bold',
-            }}
-          >
-            Github
-          </span>
+        <Tooltip className="tooltip__position">
+          <span classNames="github__text">Github</span>
         </Tooltip>
       </CSSTransition>
 
@@ -42,10 +41,18 @@ const GithubLink = () => {
         className="github__link"
         aria-label="github-link"
       >
-        <Icon name={'github'} color={'dusk'} size={'sm'} />
+        <Icon name="github" color="dusk" size="sm" />
       </a>
     </div>
   );
+};
+
+GithubLink.defaultProps = {
+  isTooltipShown: false,
+};
+
+GithubLink.propTypes = {
+  isTooltipShown: PropTypes.bool,
 };
 
 export default GithubLink;

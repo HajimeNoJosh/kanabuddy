@@ -1,4 +1,35 @@
-/* Stylelint is complaining that this file is empty so add this for now */
+@import '../utils/variables';
+
+h1,
+h2,
+h3,
+p {
+  line-height: $font-height--md;
+}
+
+h1,
+h2,
+h3,
+button {
+  font-weight: $font-weight--bold;
+}
+
+h1 {
+  @include text-xl;
+}
+
 h2 {
-  display: block;
+  @include text-lg;
+}
+
+h3 {
+  @include text-md;
+}
+
+p {
+  @include text-sm;
+}
+
+button {
+  @include text-xs;
 }
