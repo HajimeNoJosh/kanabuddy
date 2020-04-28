@@ -1,0 +1,26 @@
+@import '../../sass/utils/variables';
+
+.kana {
+  @include text-xl;
+  font-family: $font-family--secondary;
+
+  &--seaFoam {
+    color: $color--sea-foam;
+  }
+
+  &--logan {
+    color: $color--logan;
+  }
+
+  &--quartz {
+    color: $color--quartz;
+  }
+
+  &--strikethrough {
+    text-decoration: line-through;
+  }
+
+  &--transparent {
+    opacity: 60%;
+  }
+}
