@@ -6,8 +6,9 @@ html {
 
 body {
   @include text-sm;
+  background-color: $color--lavendar;
+  color: $color--dusk;
   font-family: $font-family--primary;
   font-weight: $font-weight--medium;
   line-height: $font-height--xs;
-  color: $color--dusk;
 }

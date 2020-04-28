@@ -1,14 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './sass/main.scss';
-import { Tooltip, Icon } from './components';
+import { Scaffold } from './components/Scaffold/Scaffold';
 
-const App = () => (
-  <div>
-    <Tooltip>Hello World!!</Tooltip>
-    <Icon name="github" />
-  </div>
-);
-
+const App = () => <Scaffold>asdfsd</Scaffold>;
 
 ReactDOM.render(<App />, document.getElementById('root'));
