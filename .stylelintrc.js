@@ -6,5 +6,6 @@ module.exports = {
   ],
   rules: {
     'max-nesting-depth': 2,
+    'selector-max-id': 1,
   },
 };

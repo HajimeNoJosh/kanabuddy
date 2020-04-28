@@ -1,0 +1,24 @@
+.scaffold {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 120rem;
+
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8rem;
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8rem;
+  }
+}
