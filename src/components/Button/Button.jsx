@@ -14,9 +14,9 @@ export const Button = ({ onClick, disabled, variant, iconName, text }) => (
     type="button"
     className={classnames('button', `button--${variant}`)}
   >
-    <div className="button__text">
+    <span className="button__content">
       {iconName && (
-        <span className="button__text--margin">
+        <span className="button__icon">
           <Icon
             name={iconName}
             color={variant === 'primary' ? 'white' : 'dusk'}
@@ -25,7 +25,7 @@ export const Button = ({ onClick, disabled, variant, iconName, text }) => (
         </span>
       )}
       {text}
-    </div>
+    </span>
   </button>
 );
 

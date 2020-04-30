@@ -23,12 +23,13 @@
     color: $color--dusk;
   }
 
-  &__text {
+  &__content {
     align-items: center;
     display: inline-flex;
     flex-direction: row;
-    &--margin {
-      margin-right: 1rem;
-    }
+  }
+
+  &__icon {
+    margin-right: 1rem;
   }
 }
