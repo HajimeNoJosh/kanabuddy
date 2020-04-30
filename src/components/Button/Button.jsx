@@ -6,11 +6,11 @@ import { Icon } from '../Icon/Icon';
 
 import './Button.scss';
 
-export const Button = ({ onClick, isActive, variant, iconName, text }) => (
+export const Button = ({ onClick, disabled, variant, iconName, text }) => (
   <button
     aria-label="play-button"
     onClick={onClick}
-    disabled={isActive}
+    disabled={disabled}
     type="button"
     className={classnames('button', `button--${variant}`)}
   >
@@ -31,7 +31,7 @@ export const Button = ({ onClick, isActive, variant, iconName, text }) => (
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  isActive: PropTypes.bool,
+  disabled: PropTypes.bool,
   iconName: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary']),
   text: PropTypes.string,
