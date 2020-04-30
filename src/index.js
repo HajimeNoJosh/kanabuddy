@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './sass/main.scss';
-import { Scaffold } from './components/Scaffold/Scaffold';
+import { TestPage } from './components/TestPage/TestPage';
 
-const App = () => <Scaffold>asdfsd</Scaffold>;
+const App = () => <TestPage />;
 
 ReactDOM.render(<App />, document.getElementById('root'));
