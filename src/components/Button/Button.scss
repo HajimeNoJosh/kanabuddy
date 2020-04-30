@@ -1,0 +1,35 @@
+@import '../../sass/utils/variables';
+
+.button {
+  border: 0;
+  border-radius: 5rem;
+  display: inline-block;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+  width: 180px;
+
+  &:disabled {
+    opacity: 40%;
+  }
+
+  &--primary {
+    background-color: $color--amaranth;
+    color: $color--white;
+  }
+
+  &--secondary {
+    background-color: $color--quartz;
+    color: $color--dusk;
+  }
+
+  &__content {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  &__icon {
+    margin-right: 1rem;
+  }
+}

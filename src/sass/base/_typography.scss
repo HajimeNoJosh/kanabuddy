@@ -9,8 +9,7 @@ p {
 
 h1,
 h2,
-h3,
-button {
+h3 {
   font-weight: $font-weight--bold;
 }
 
@@ -32,4 +31,5 @@ p {
 
 button {
   @include text-xs;
+  font-weight: $font-weight--medium;
 }

@@ -31,7 +31,7 @@ export const Icon = ({ name, color, size }) => (
 );
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(['github', 'play', 'pause', 'restart']),
+  name: PropTypes.oneOf(['github', 'start', 'pause', 'restart']),
   color: PropTypes.oneOf(['dusk', 'white']),
   size: PropTypes.oneOf(['xs', 'sm']),
 };
