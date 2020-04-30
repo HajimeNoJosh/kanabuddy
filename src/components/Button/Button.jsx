@@ -6,9 +6,16 @@ import { Icon } from '../Icon/Icon';
 
 import './Button.scss';
 
-export const Button = ({ onClick, disabled, variant, iconName, text }) => (
+export const Button = ({
+  onClick,
+  ariaLabel,
+  disabled,
+  variant,
+  iconName,
+  text,
+}) => (
   <button
-    aria-label="play-button"
+    aria-label={ariaLabel}
     onClick={onClick}
     disabled={disabled}
     type="button"
@@ -31,6 +38,7 @@ export const Button = ({ onClick, disabled, variant, iconName, text }) => (
 
 Button.propTypes = {
   onClick: PropTypes.func,
+  ariaLabel: PropTypes.string,
   disabled: PropTypes.bool,
   iconName: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary']),
