@@ -18,29 +18,22 @@ export const Default = () => {
 
   const isActive = boolean(label, defaultValue);
 
-  const colorSelect = {
-    amaranth: 'amaranth',
-    quartz: 'quartz',
-  };
-  const color = options('Color', colorSelect, 'amaranth', {
-    display: 'select',
-  });
-
   const iconNameSelect = {
     start: 'start',
     pause: 'pause',
     restart: 'restart',
-    default: 'default',
+    none: null,
   };
-  const iconName = options('IconName', iconNameSelect, 'default', {
+  const iconName = options('IconName', iconNameSelect, null, {
     display: 'select',
   });
 
-  const iconColorSelect = {
-    dusk: 'dusk',
-    white: 'white',
+  const variantSelect = {
+    primary: 'primary',
+    secondary: 'secondary',
   };
-  const iconColor = options('IconColor', iconColorSelect, 'white', {
+
+  const variant = options('Variant', variantSelect, 'primary', {
     display: 'select',
   });
 
@@ -57,8 +50,7 @@ export const Default = () => {
   return (
     <Button
       isActive={isActive}
-      color={color}
-      iconColor={iconColor}
+      variant={variant}
       iconName={iconName}
       text={text}
     />

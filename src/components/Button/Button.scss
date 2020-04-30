@@ -1,6 +1,7 @@
 @import '../../sass/utils/variables';
 
 .button {
+  border: 0;
   border-radius: 5rem;
   display: inline-block;
   height: 60px;
@@ -12,11 +13,12 @@
     opacity: 40%;
   }
 
-  &--amaranth {
+  &--primary {
     background-color: $color--amaranth;
     color: $color--white;
   }
-  &--quartz {
+
+  &--secondary {
     background-color: $color--quartz;
     color: $color--dusk;
   }
