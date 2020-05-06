@@ -3,16 +3,20 @@ import PropTypes from 'prop-types';
 
 import './Input.scss';
 
-export const Input = ({ onKeyDown }) => (
+export const Input = ({ ariaLabel, maxLength, onKeyDown, ref }) => (
   <input
     type="text"
-    aria-label="Type Kana"
+    aria-label={ariaLabel}
     className="input"
-    maxLength="4"
+    maxLength={maxLength}
     onKeyDown={onKeyDown}
+    ref={ref}
   />
 );
 
 Input.propTypes = {
   onKeyDown: PropTypes.func,
+  ariaLabel: PropTypes.string,
+  maxLength: PropTypes.string,
+  ref: PropTypes.func,
 };

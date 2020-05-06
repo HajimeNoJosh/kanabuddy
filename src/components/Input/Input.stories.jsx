@@ -6,4 +6,4 @@ export default {
   component: Input,
 };
 
-export const Default = () => <Input />;
+export const Default = () => <Input ariaLabel="Kana text" maxLength="4" />;
