@@ -55,7 +55,7 @@ export const TestPage = () => {
     <Scaffold minutes={time.m} seconds={time.s}>
       <input onKeyDown={startTimer}></input>
       <div className="test">
-        {isPauseShowing && (
+        {isPauseShowing ? (
           <Button
             onClick={toggle}
             aria-label="pause-button"
@@ -64,26 +64,25 @@ export const TestPage = () => {
             iconName="pause"
             text="Pause"
           />
-        )}
-        {!isPauseShowing && (
-          <Button
-            onClick={toggle}
-            aria-label="play-button"
-            disabled={isActive}
-            variant="primary"
-            iconName="start"
-            text="Start"
-          />
-        )}
-        {!isPauseShowing && (
-          <Button
-            onClick={restart}
-            aria-label="restart-button"
-            disabled={isActive}
-            variant="secondary"
-            iconName="restart"
-            text="Restart"
-          />
+        ) : (
+          <div>
+            <Button
+              onClick={toggle}
+              aria-label="play-button"
+              disabled={isActive}
+              variant="primary"
+              iconName="start"
+              text="Start"
+            />
+            <Button
+              onClick={restart}
+              aria-label="restart-button"
+              disabled={isActive}
+              variant="secondary"
+              iconName="restart"
+              text="Restart"
+            />
+          </div>
         )}
       </div>
     </Scaffold>
