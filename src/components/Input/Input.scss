@@ -15,4 +15,8 @@
     border-color: $color--sea-foam;
     outline: 0;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

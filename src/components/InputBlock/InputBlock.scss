@@ -1,0 +1,57 @@
+@import '../../sass/utils/variables';
+
+.block {
+  @include text-xl;
+  align-items: center;
+
+  background-color: $color--white;
+  border-bottom: 3px solid $color--quartz;
+  border-top: 3px solid $color--quartz;
+  display: flex;
+  font-family: $font-family--secondary;
+  height: 15rem;
+
+  &__entry {
+    margin-right: 2rem;
+  }
+
+  &__textBox {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    position: absolute;
+    top: 0;
+
+    .block--completed & {
+      right: 0;
+    }
+
+    .block--todo & {
+      left: 0;
+    }
+  }
+
+  &__column {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__completed {
+    color: $color--logan;
+
+    &--incorrect {
+      text-decoration: line-through;
+    }
+  }
+
+  &__todo--entries {
+    color: $color--quartz;
+    margin-left: 1rem;
+
+    &:first-child {
+      color: $color--sea-foam;
+    }
+  }
+}

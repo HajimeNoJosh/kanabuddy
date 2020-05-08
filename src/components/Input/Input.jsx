@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import './Input.scss';
 
-export const Input = ({ ariaLabel, maxLength, disabled, onKeyDown, ref }) => (
+export const Input = ({
+  ariaLabel,
+  maxLength,
+  disabled,
+  onKeyDown,
+  inputRef,
+}) => (
   <input
     type="text"
     aria-label={ariaLabel}
@@ -11,14 +17,14 @@ export const Input = ({ ariaLabel, maxLength, disabled, onKeyDown, ref }) => (
     maxLength={maxLength}
     disabled={disabled}
     onKeyDown={onKeyDown}
-    ref={ref}
+    ref={inputRef}
   />
 );
 
 Input.propTypes = {
   onKeyDown: PropTypes.func,
   ariaLabel: PropTypes.string,
-  maxLength: PropTypes.string,
+  maxLength: PropTypes.number,
   disabled: PropTypes.bool,
-  ref: PropTypes.func,
+  inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
