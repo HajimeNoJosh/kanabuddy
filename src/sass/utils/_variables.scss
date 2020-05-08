@@ -76,3 +76,9 @@ $space--xxl: 18rem;
   font-size: $font-size--xxl;
   letter-spacing: $font-space--xxl;
 }
+
+@mixin inherit-font {
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}

@@ -1,0 +1,18 @@
+@import '../../sass/utils/variables';
+
+.input {
+  @include text-xl;
+  @include inherit-font;
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 4px $color--logan;
+  color: $color--sea-foam;
+  cursor: text;
+  max-width: 20rem;
+  text-align: right;
+
+  &:focus {
+    border-color: $color--sea-foam;
+    outline: 0;
+  }
+}
