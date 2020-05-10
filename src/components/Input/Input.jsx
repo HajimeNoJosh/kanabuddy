@@ -7,7 +7,7 @@ export const Input = ({
   ariaLabel,
   maxLength,
   disabled,
-  onKeyDown,
+  onKeyUp,
   inputRef,
 }) => (
   <input
@@ -16,13 +16,13 @@ export const Input = ({
     className="input"
     maxLength={maxLength}
     disabled={disabled}
-    onKeyDown={onKeyDown}
+    onKeyUp={onKeyUp}
     ref={inputRef}
   />
 );
 
 Input.propTypes = {
-  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
   ariaLabel: PropTypes.string,
   maxLength: PropTypes.number,
   disabled: PropTypes.bool,
