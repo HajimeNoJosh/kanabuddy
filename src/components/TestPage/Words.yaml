@@ -1,0 +1,65 @@
+---
+wordsToDo:
+  - answer: a
+    hiragana: あ
+    id: 1
+  - answer: i
+    hiragana: い
+    id: 2
+  - answer: u
+    hiragana: う
+    id: 3
+  - answer: e
+    hiragana: え
+    id: 4
+  - answer: o
+    hiragana: お
+    id: 5
+  - answer: ka
+    hiragana: か
+    id: 6
+  - answer: ki
+    hiragana: き
+    id: 7
+  - answer: ku
+    hiragana: く
+    id: 8
+  - answer: ke
+    hiragana: け
+    id: 9
+  - answer: ko
+    hiragana: こ
+    id: 10
+  - answer: sa
+    hiragana: さ
+    id: 11
+  - answer: shi
+    hiragana: し
+    id: 12
+  - answer: su
+    hiragana: す
+    id: 13
+  - answer: se
+    hiragana: せ
+    id: 14
+  - answer: so
+    hiragana: そ
+    id: 15
+  - answer: chi
+    hiragana: ち
+    id: 16
+  - answer: tsu
+    hiragana: つ
+    id: 17
+  - answer: te
+    hiragana: て
+    id: 18
+  - answer: to
+    hiragana: と
+    id: 19
+  - answer: na
+    hiragana: な
+    id: 20
+  - answer: watashi
+    hiragana: わたし
+    id: 21

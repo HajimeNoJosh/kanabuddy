@@ -21,7 +21,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "yaml-loader": "^0.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

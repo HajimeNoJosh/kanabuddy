@@ -26,6 +26,11 @@ module.exports = (options) => ({
         ],
       },
       {
+        test: /\.ya?ml$/,
+        type: 'json', // Required by Webpack v4
+        use: 'yaml-loader',
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
@@ -46,11 +51,11 @@ module.exports = (options) => ({
             loader: '@svgr/webpack',
             options: {
               // Exclude height and width attributes
-              dimensions: false
-            }
-          }
-        ]
-      }
+              dimensions: false,
+            },
+          },
+        ],
+      },
     ],
   },
   devServer: options.devServer,
