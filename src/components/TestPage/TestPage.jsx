@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useReducer } from 'react';
+import { AppStates } from '../../app/states';
 import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
 import { InputBlock } from '../InputBlock/InputBlock';
@@ -10,8 +11,7 @@ const compareTwo = (first, second) =>
 
 const initialState = {
   time: { m: 1, s: 0 },
-  isActive: false,
-  isPauseShowing: true,
+  appState: AppStates.Initial,
   timerId: null,
   wordsToDo: [
     { answer: 'dog', isCorrect: false, id: 1 },
@@ -21,8 +21,6 @@ const initialState = {
     { answer: 'ape', isCorrect: false, id: 5 },
   ],
   wordsComplete: [],
-  inputDisabled: false,
-  noTime: false,
 };
 
 function reducer(state, action) {
@@ -30,18 +28,18 @@ function reducer(state, action) {
     case 'play':
       return {
         ...state,
-        isActive: !state.isActive,
-        inputDisabled: !state.inputDisabled,
-        isPauseShowing: !state.isActive,
+        appState: AppStates.Play,
       };
-    case 'setTimer':
-      return { ...state, timerId: action.id };
     case 'pause':
       return {
         ...state,
-        isActive: !state.isActive,
-        inputDisabled: !state.inputDisabled,
-        isPauseShowing: !state.isActive,
+        appState: AppStates.Pause,
+      };
+    case 'finished':
+      return {
+        ...state,
+        wordsToDo: null,
+        appState: AppStates.Finished,
       };
     case 'submitWordsComplete':
       return {
@@ -58,21 +56,13 @@ function reducer(state, action) {
         ],
         wordsToDo: [...state.wordsToDo.slice(1)],
       };
-    case 'noWords':
-      return {
-        ...state,
-        wordsToDo: null,
-        noTime: true,
-        isActive: !state.isActive,
-        inputDisabled: !state.inputDisabled,
-        isPauseShowing: !state.isActive,
-      };
+    case 'setTimer':
+      return { ...state, timerId: action.id };
     case 'firstTick':
       return {
         ...state,
-        time: { m: 0, s: 59 },
-        isActive: !state.isActive,
-        isPauseShowing: !state.isActive,
+        time: { m: 0, s: 3 },
+        appState: AppStates.Play,
       };
     case 'ticks':
       return {
@@ -82,10 +72,7 @@ function reducer(state, action) {
     case 'finalTick':
       return {
         ...state,
-        isActive: false,
-        isPauseShowing: false,
-        noTime: true,
-        inputDisabled: true,
+        appState: AppStates.Finished,
       };
     case 'reset':
       return { ...initialState };
@@ -97,17 +84,22 @@ function reducer(state, action) {
 export const TestPage = () => {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
+  const firstState = state.appState === AppStates.Initial;
+  const playState = state.appState === AppStates.Play;
+  const pauseState = state.appState === AppStates.Pause;
+  const finishedState = state.appState === AppStates.Finished;
+
   const inputRef = useRef();
 
   useEffect(() => {
-    if (state.isActive) {
+    if (playState) {
       const id = setInterval(tick, 1000);
       dispatch({ type: 'setTimer', id });
-    } else if (!state.isActive && state.time.s !== 0) {
+    } else if (!playState) {
       clearInterval(state.timerId);
     }
     return () => clearInterval(state.timerId);
-  }, [state.isActive, state.time]);
+  }, [state.appState, state.time]);
 
   function pause() {
     dispatch({ type: 'pause' });
@@ -127,7 +119,7 @@ export const TestPage = () => {
     }
 
     if (state.wordsToDo.length === 1) {
-      dispatch({ type: 'noWords' });
+      dispatch({ type: 'finished' });
     }
     inputRef.current.value = '';
   };
@@ -158,7 +150,7 @@ export const TestPage = () => {
       dispatch({ type: 'submitWordsToDoCorrect' });
       inputRef.current.value = '';
       if (state.wordsToDo.length === 1) {
-        dispatch({ type: 'noWords' });
+        dispatch({ type: 'finished' });
       }
     }
   };
@@ -171,17 +163,17 @@ export const TestPage = () => {
             onKeyUp={startTimer}
             wordsToDo={state.wordsToDo}
             wordsComplete={state.wordsComplete}
-            inputDisabled={state.inputDisabled}
+            inputDisabled={pauseState || finishedState}
             onSubmit={onSubmit}
             inputRef={inputRef}
           />
         </div>
         <div className="test__buttons">
-          {state.isPauseShowing ? (
+          {firstState || playState ? (
             <Button
               onClick={pause}
               aria-label="pause-button"
-              disabled={!state.isActive}
+              disabled={firstState}
               variant="primary"
               iconName="pause"
               text="Pause"
@@ -191,7 +183,7 @@ export const TestPage = () => {
               <Button
                 onClick={play}
                 aria-label="play-button"
-                disabled={(state.isActive, state.noTime)}
+                disabled={playState || finishedState}
                 variant="primary"
                 iconName="start"
                 text="Start"
@@ -199,7 +191,7 @@ export const TestPage = () => {
               <Button
                 onClick={restart}
                 aria-label="restart-button"
-                disabled={state.isActive}
+                disabled={playState}
                 variant="secondary"
                 iconName="restart"
                 text="Restart"
