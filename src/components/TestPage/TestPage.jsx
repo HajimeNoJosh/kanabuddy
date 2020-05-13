@@ -55,7 +55,7 @@ function reducer(state, action) {
     case 'firstTick':
       return {
         ...state,
-        time: { m: 0, s: 3 },
+        time: { m: 0, s: 59 },
         appState: AppStates.Play,
       };
     case 'ticks':
@@ -103,6 +103,13 @@ export const TestPage = () => {
     dispatch({ type: 'play' });
   }
 
+  const submitWord = () => {
+    if (state.wordsToDo.length === 1) {
+      dispatch({ type: 'finished' });
+    }
+    inputRef.current.value = '';
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -111,11 +118,7 @@ export const TestPage = () => {
     } else {
       dispatch({ type: 'submitWordsComplete', isCorrect: false });
     }
-
-    if (state.wordsToDo.length === 1) {
-      dispatch({ type: 'finished' });
-    }
-    inputRef.current.value = '';
+    submitWord();
   };
 
   const restart = () => {
@@ -142,10 +145,7 @@ export const TestPage = () => {
     }
     if (compareTwo(state.wordsToDo[0].answer, inputRef.current.value)) {
       dispatch({ type: 'submitWordsComplete', isCorrect: true });
-      inputRef.current.value = '';
-      if (state.wordsToDo.length === 1) {
-        dispatch({ type: 'finished' });
-      }
+      submitWord();
     }
   };
 
