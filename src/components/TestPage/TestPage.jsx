@@ -44,15 +44,9 @@ function reducer(state, action) {
     case 'submitWordsComplete':
       return {
         ...state,
-        wordsComplete: [...state.wordsComplete, state.wordsToDo[0]],
-        wordsToDo: [...state.wordsToDo.slice(1)],
-      };
-    case 'submitWordsToDoCorrect':
-      return {
-        ...state,
         wordsComplete: [
           ...state.wordsComplete,
-          { ...state.wordsToDo[0], isCorrect: true },
+          { ...state.wordsToDo[0], isCorrect: action.isCorrect },
         ],
         wordsToDo: [...state.wordsToDo.slice(1)],
       };
@@ -113,9 +107,9 @@ export const TestPage = () => {
     e.preventDefault();
 
     if (compareTwo(state.wordsToDo[0].answer, inputRef.current.value)) {
-      dispatch({ type: 'submitWordsToDoCorrect' });
+      dispatch({ type: 'submitWordsComplete', isCorrect: true });
     } else {
-      dispatch({ type: 'submitWordsComplete' });
+      dispatch({ type: 'submitWordsComplete', isCorrect: false });
     }
 
     if (state.wordsToDo.length === 1) {
@@ -147,7 +141,7 @@ export const TestPage = () => {
       dispatch({ type: 'firstTick' });
     }
     if (compareTwo(state.wordsToDo[0].answer, inputRef.current.value)) {
-      dispatch({ type: 'submitWordsToDoCorrect' });
+      dispatch({ type: 'submitWordsComplete', isCorrect: true });
       inputRef.current.value = '';
       if (state.wordsToDo.length === 1) {
         dispatch({ type: 'finished' });
