@@ -95,32 +95,6 @@ export const TestPage = () => {
     return () => clearInterval(state.timerId);
   }, [state.appState, state.time]);
 
-  function pause() {
-    dispatch({ type: 'pause' });
-  }
-
-  function play() {
-    dispatch({ type: 'play' });
-  }
-
-  const submitWord = () => {
-    if (state.wordsToDo.length === 1) {
-      dispatch({ type: 'finished' });
-    }
-    inputRef.current.value = '';
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    if (compareTwo(state.wordsToDo[0].answer, inputRef.current.value)) {
-      dispatch({ type: 'submitWordsComplete', isCorrect: true });
-    } else {
-      dispatch({ type: 'submitWordsComplete', isCorrect: false });
-    }
-    submitWord();
-  };
-
   const restart = () => {
     clearInterval(state.timerId);
     dispatch({ type: 'reset' });
@@ -132,21 +106,40 @@ export const TestPage = () => {
     if (state.time.m === 0 && state.time.s === 0) {
       clearInterval(state.timerId);
       dispatch({ type: 'finalTick' });
+    } else {
+      const newSecond = state.time.s - 1;
+
+      dispatch({ type: 'ticks', newSecond });
     }
-
-    const newSecond = state.time.s - 1;
-
-    dispatch({ type: 'ticks', newSecond });
   };
 
-  const startTimer = () => {
+  const onKeyPress = () => {
     if (state.time.m === 1) {
       dispatch({ type: 'firstTick' });
     }
-    if (compareTwo(state.wordsToDo[0].answer, inputRef.current.value)) {
-      dispatch({ type: 'submitWordsComplete', isCorrect: true });
-      submitWord();
+    submitWords(true);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    submitWords();
+  };
+
+  const submitWords = (isPartialSubmit = false) => {
+    const isAnswerCorrect = compareTwo(
+      state.wordsToDo[0].answer,
+      inputRef.current.value,
+    );
+    if (isPartialSubmit && !isAnswerCorrect) {
+      return;
     }
+    dispatch({ type: 'submitWordsComplete', isCorrect: isAnswerCorrect });
+
+    if (state.wordsToDo.length === 1) {
+      dispatch({ type: 'finished' });
+    }
+
+    inputRef.current.value = '';
   };
 
   return (
@@ -154,7 +147,7 @@ export const TestPage = () => {
       <div className="test">
         <div className="test__input">
           <InputBlock
-            onKeyUp={startTimer}
+            onKeyUp={onKeyPress}
             wordsToDo={state.wordsToDo}
             wordsComplete={state.wordsComplete}
             inputDisabled={pauseState || finishedState}
@@ -165,7 +158,9 @@ export const TestPage = () => {
         <div className="test__buttons">
           {firstState || playState ? (
             <Button
-              onClick={pause}
+              onClick={() => {
+                dispatch({ type: 'pause' });
+              }}
               aria-label="pause-button"
               disabled={firstState}
               variant="primary"
@@ -175,7 +170,9 @@ export const TestPage = () => {
           ) : (
             <div>
               <Button
-                onClick={play}
+                onClick={() => {
+                  dispatch({ type: 'play' });
+                }}
                 aria-label="play-button"
                 disabled={playState || finishedState}
                 variant="primary"
