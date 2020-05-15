@@ -1,89 +1,195 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useReducer } from 'react';
+import { AppStates } from '../../app/states';
 import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
+import { InputBlock } from '../InputBlock/InputBlock';
 
 import './TestPage.scss';
 
+const compareTwo = (first, second) =>
+  first.toLowerCase() === second.toLowerCase();
+
+const initialState = {
+  time: { m: 1, s: 0 },
+  appState: AppStates.Initial,
+  timerId: null,
+  wordsToDo: [
+    { answer: 'dog', isCorrect: false, id: 1 },
+    { answer: 'cat', isCorrect: false, id: 2 },
+    { answer: 'lol', isCorrect: false, id: 3 },
+    { answer: 'bee', isCorrect: false, id: 4 },
+    { answer: 'ape', isCorrect: false, id: 5 },
+  ],
+  wordsComplete: [],
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'play':
+      return {
+        ...state,
+        appState: AppStates.Play,
+      };
+    case 'pause':
+      return {
+        ...state,
+        appState: AppStates.Pause,
+      };
+    case 'finished':
+      return {
+        ...state,
+        wordsToDo: null,
+        appState: AppStates.Finished,
+      };
+    case 'submitWordsComplete':
+      return {
+        ...state,
+        wordsComplete: [
+          ...state.wordsComplete,
+          { ...state.wordsToDo[0], isCorrect: action.isCorrect },
+        ],
+        wordsToDo: [...state.wordsToDo.slice(1)],
+      };
+    case 'setTimer':
+      return { ...state, timerId: action.id };
+    case 'firstTick':
+      return {
+        ...state,
+        time: { m: 0, s: 59 },
+        appState: AppStates.Play,
+      };
+    case 'ticks':
+      return {
+        ...state,
+        time: { ...state.time, s: action.newSecond },
+      };
+    case 'finalTick':
+      return {
+        ...state,
+        appState: AppStates.Finished,
+      };
+    case 'reset':
+      return { ...initialState };
+    default:
+      throw new Error();
+  }
+}
+
 export const TestPage = () => {
-  const [time, setTime] = useState({ m: 1, s: 0 });
-  const [isActive, setIsActive] = useState(false);
-  const [isPauseShowing, setIsPauseShowing] = useState(true);
-  const [timerId, setTimerId] = useState(null);
+  const [state, dispatch] = useReducer(reducer, { ...initialState });
+
+  const firstState = state.appState === AppStates.Initial;
+  const playState = state.appState === AppStates.Play;
+  const pauseState = state.appState === AppStates.Pause;
+  const finishedState = state.appState === AppStates.Finished;
+
+  const inputRef = useRef();
 
   useEffect(() => {
-    if (isActive) {
+    if (playState) {
       const id = setInterval(tick, 1000);
-      setTimerId(id);
-    } else if (!isActive && time.s !== 0) {
-      clearInterval(timerId);
+      dispatch({ type: 'setTimer', id });
+    } else if (!playState) {
+      clearInterval(state.timerId);
     }
-    return () => clearInterval(timerId);
-  }, [isActive, time]);
-
-  function toggle() {
-    setIsActive(!isActive);
-    setIsPauseShowing(!isActive);
-  }
+    return () => clearInterval(state.timerId);
+  }, [state.appState, state.time]);
 
   const restart = () => {
-    setTime({ m: 1, s: 0 });
-    clearInterval(timerId);
-    setIsActive(false);
-    setIsPauseShowing(true);
+    clearInterval(state.timerId);
+    dispatch({ type: 'reset' });
+    inputRef.current.value = '';
+    inputRef.current.focus();
   };
 
   const tick = () => {
-    if (time.m === 1 && time.s === 0) {
-      setTime({ m: 0, s: 59 });
+    if (state.time.m === 0 && state.time.s === 0) {
+      clearInterval(state.timerId);
+      dispatch({ type: 'finalTick' });
     } else {
-      setTime({ m: 0, s: time.s - 1 });
-    }
-    if (time.m === 0 && time.s === 0) {
-      clearInterval(timerId);
-      setIsActive(false);
+      const newSecond = state.time.s - 1;
+
+      dispatch({ type: 'ticks', newSecond });
     }
   };
 
-  const startTimer = () => {
-    if (time.m === 1) {
-      tick();
-      toggle();
+  const onKeyPress = () => {
+    if (state.time.m === 1) {
+      dispatch({ type: 'firstTick' });
     }
+    submitWords(true);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    submitWords();
+  };
+
+  const submitWords = (isPartialSubmit = false) => {
+    const isAnswerCorrect = compareTwo(
+      state.wordsToDo[0].answer,
+      inputRef.current.value,
+    );
+    if (isPartialSubmit && !isAnswerCorrect) {
+      return;
+    }
+    dispatch({ type: 'submitWordsComplete', isCorrect: isAnswerCorrect });
+
+    if (state.wordsToDo.length === 1) {
+      dispatch({ type: 'finished' });
+    }
+
+    inputRef.current.value = '';
   };
 
   return (
-    <Scaffold minutes={time.m} seconds={time.s}>
-      <input onKeyDown={startTimer}></input>
+    <Scaffold minutes={state.time.m} seconds={state.time.s}>
       <div className="test">
-        {isPauseShowing ? (
-          <Button
-            onClick={toggle}
-            aria-label="pause-button"
-            disabled={!isActive}
-            variant="primary"
-            iconName="pause"
-            text="Pause"
+        <div className="test__input">
+          <InputBlock
+            onKeyUp={onKeyPress}
+            wordsToDo={state.wordsToDo}
+            wordsComplete={state.wordsComplete}
+            inputDisabled={pauseState || finishedState}
+            onSubmit={onSubmit}
+            inputRef={inputRef}
           />
-        ) : (
-          <div>
+        </div>
+        <div className="test__buttons">
+          {firstState || playState ? (
             <Button
-              onClick={toggle}
-              aria-label="play-button"
-              disabled={isActive}
+              onClick={() => {
+                dispatch({ type: 'pause' });
+              }}
+              aria-label="pause-button"
+              disabled={firstState}
               variant="primary"
-              iconName="start"
-              text="Start"
+              iconName="pause"
+              text="Pause"
             />
-            <Button
-              onClick={restart}
-              aria-label="restart-button"
-              disabled={isActive}
-              variant="secondary"
-              iconName="restart"
-              text="Restart"
-            />
-          </div>
-        )}
+          ) : (
+            <div>
+              <Button
+                onClick={() => {
+                  dispatch({ type: 'play' });
+                }}
+                aria-label="play-button"
+                disabled={playState || finishedState}
+                variant="primary"
+                iconName="start"
+                text="Start"
+              />
+              <Button
+                onClick={restart}
+                aria-label="restart-button"
+                disabled={playState}
+                variant="secondary"
+                iconName="restart"
+                text="Restart"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </Scaffold>
   );

@@ -28,7 +28,7 @@ const GithubLink = ({ isTooltipShown }) => {
         onExited={() => setTooltipVisibility(false)}
       >
         <Tooltip className="tooltip__position">
-          <span classNames="github__text">Github</span>
+          <span className="github__text">Github</span>
         </Tooltip>
       </CSSTransition>
 
