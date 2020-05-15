@@ -4,6 +4,8 @@ import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
 import { InputBlock } from '../InputBlock/InputBlock';
 
+import Words from './Words.yaml';
+
 import './TestPage.scss';
 
 const compareTwo = (first, second) =>
@@ -13,13 +15,7 @@ const initialState = {
   time: { m: 1, s: 0 },
   appState: AppStates.Initial,
   timerId: null,
-  wordsToDo: [
-    { answer: 'dog', isCorrect: false, id: 1 },
-    { answer: 'cat', isCorrect: false, id: 2 },
-    { answer: 'lol', isCorrect: false, id: 3 },
-    { answer: 'bee', isCorrect: false, id: 4 },
-    { answer: 'ape', isCorrect: false, id: 5 },
-  ],
+  wordsToDo: Words.wordsToDo,
   wordsComplete: [],
 };
 
@@ -144,6 +140,10 @@ export const TestPage = () => {
 
   return (
     <Scaffold minutes={state.time.m} seconds={state.time.s}>
+      <div className="instructions">
+        Type the kana using Romaji as accurately as you can
+      </div>
+
       <div className="test">
         <div className="test__input">
           <InputBlock
