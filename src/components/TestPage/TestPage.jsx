@@ -4,6 +4,8 @@ import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
 import { InputBlock } from '../InputBlock/InputBlock';
 
+import Words from './Words.yaml';
+
 import './TestPage.scss';
 
 const compareTwo = (first, second) =>
@@ -13,13 +15,7 @@ const initialState = {
   time: { m: 1, s: 0 },
   appState: AppStates.Initial,
   timerId: null,
-  wordsToDo: [
-    { answer: 'dog', isCorrect: false, id: 1 },
-    { answer: 'cat', isCorrect: false, id: 2 },
-    { answer: 'lol', isCorrect: false, id: 3 },
-    { answer: 'bee', isCorrect: false, id: 4 },
-    { answer: 'ape', isCorrect: false, id: 5 },
-  ],
+  wordsToDo: Words.wordsToDo,
   wordsComplete: [],
 };
 
@@ -144,6 +140,10 @@ export const TestPage = () => {
 
   return (
     <Scaffold minutes={state.time.m} seconds={state.time.s}>
+      <div className="instructions">
+        Type the kana using Romaji as accurately as you can
+      </div>
+
       <div className="test">
         <div className="test__input">
           <InputBlock
@@ -157,36 +157,42 @@ export const TestPage = () => {
         </div>
         <div className="test__buttons">
           {firstState || playState ? (
-            <Button
-              onClick={() => {
-                dispatch({ type: 'pause' });
-              }}
-              aria-label="pause-button"
-              disabled={firstState}
-              variant="primary"
-              iconName="pause"
-              text="Pause"
-            />
-          ) : (
-            <div>
+            <span className="test__buttons--pause">
               <Button
                 onClick={() => {
-                  dispatch({ type: 'play' });
+                  dispatch({ type: 'pause' });
                 }}
-                aria-label="play-button"
-                disabled={playState || finishedState}
+                aria-label="pause-button"
+                disabled={firstState}
                 variant="primary"
-                iconName="start"
-                text="Start"
+                iconName="pause"
+                text="Pause"
               />
-              <Button
-                onClick={restart}
-                aria-label="restart-button"
-                disabled={playState}
-                variant="secondary"
-                iconName="restart"
-                text="Restart"
-              />
+            </span>
+          ) : (
+            <div>
+              <span className="test__buttons--start">
+                <Button
+                  onClick={() => {
+                    dispatch({ type: 'play' });
+                  }}
+                  aria-label="play-button"
+                  disabled={playState || finishedState}
+                  variant="primary"
+                  iconName="start"
+                  text="Start"
+                />
+              </span>
+              <span className="test__buttons--restart">
+                <Button
+                  onClick={restart}
+                  aria-label="restart-button"
+                  disabled={playState}
+                  variant="secondary"
+                  iconName="restart"
+                  text="Restart"
+                />
+              </span>
             </div>
           )}
         </div>

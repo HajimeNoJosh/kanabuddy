@@ -18,7 +18,7 @@ export const InputBlock = ({
   if (wordsToDo) {
     todoJsx = wordsToDo.map((entry) => (
       <span key={entry.id} className="block__entry block__todo--entries">
-        {entry.answer}
+        {entry.hiragana}
       </span>
     ));
   }
@@ -30,7 +30,7 @@ export const InputBlock = ({
           entry.isCorrect ? 'correct' : 'incorrect'
         }`}
       >
-        {entry.answer}
+        {entry.hiragana}
       </span>
     ));
   }
