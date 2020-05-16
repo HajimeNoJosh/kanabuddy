@@ -12,5 +12,8 @@
     display: flex;
     justify-content: center;
     margin-top: 8rem;
+    &--start {
+      margin-right: 3rem;
+    }
   }
 }

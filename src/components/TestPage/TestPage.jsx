@@ -157,36 +157,42 @@ export const TestPage = () => {
         </div>
         <div className="test__buttons">
           {firstState || playState ? (
-            <Button
-              onClick={() => {
-                dispatch({ type: 'pause' });
-              }}
-              aria-label="pause-button"
-              disabled={firstState}
-              variant="primary"
-              iconName="pause"
-              text="Pause"
-            />
-          ) : (
-            <div>
+            <span className="test__buttons--pause">
               <Button
                 onClick={() => {
-                  dispatch({ type: 'play' });
+                  dispatch({ type: 'pause' });
                 }}
-                aria-label="play-button"
-                disabled={playState || finishedState}
+                aria-label="pause-button"
+                disabled={firstState}
                 variant="primary"
-                iconName="start"
-                text="Start"
+                iconName="pause"
+                text="Pause"
               />
-              <Button
-                onClick={restart}
-                aria-label="restart-button"
-                disabled={playState}
-                variant="secondary"
-                iconName="restart"
-                text="Restart"
-              />
+            </span>
+          ) : (
+            <div>
+              <span className="test__buttons--start">
+                <Button
+                  onClick={() => {
+                    dispatch({ type: 'play' });
+                  }}
+                  aria-label="play-button"
+                  disabled={playState || finishedState}
+                  variant="primary"
+                  iconName="start"
+                  text="Start"
+                />
+              </span>
+              <span className="test__buttons--restart">
+                <Button
+                  onClick={restart}
+                  aria-label="restart-button"
+                  disabled={playState}
+                  variant="secondary"
+                  iconName="restart"
+                  text="Restart"
+                />
+              </span>
             </div>
           )}
         </div>
