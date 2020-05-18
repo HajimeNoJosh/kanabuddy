@@ -10,6 +10,7 @@
   display: flex;
   font-family: $font-family--secondary;
   height: 15rem;
+  justify-content: center;
 
   &__entry {
     margin-right: 2rem;
@@ -38,20 +39,9 @@
     position: relative;
   }
 
-  &__completed {
-    color: $color--logan;
-
-    &--incorrect {
-      text-decoration: line-through;
-    }
-  }
-
-  &__todo--entries {
-    color: $color--quartz;
-    margin-left: 1rem;
-
-    &:first-child {
-      color: $color--sea-foam;
-    }
+  &__paused {
+    @include text-xl;
+    font-family: $font-family--primary;
+    font-weight: $font-weight--bold;
   }
 }

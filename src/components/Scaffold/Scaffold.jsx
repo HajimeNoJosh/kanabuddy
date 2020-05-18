@@ -20,7 +20,7 @@ export const Scaffold = ({ children, minutes, seconds }) => (
 );
 
 Scaffold.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   minutes: PropTypes.number,
   seconds: PropTypes.number,
 };

@@ -74,17 +74,18 @@ function reducer(state, action) {
 export const TestPage = () => {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
+  const inputRef = useRef();
+
   const firstState = state.appState === AppStates.Initial;
   const playState = state.appState === AppStates.Play;
   const pauseState = state.appState === AppStates.Pause;
   const finishedState = state.appState === AppStates.Finished;
 
-  const inputRef = useRef();
-
   useEffect(() => {
     if (playState) {
       const id = setInterval(tick, 1000);
       dispatch({ type: 'setTimer', id });
+      inputRef.current.focus();
     } else if (!playState) {
       clearInterval(state.timerId);
     }
@@ -94,8 +95,6 @@ export const TestPage = () => {
   const restart = () => {
     clearInterval(state.timerId);
     dispatch({ type: 'reset' });
-    inputRef.current.value = '';
-    inputRef.current.focus();
   };
 
   const tick = () => {
@@ -109,8 +108,11 @@ export const TestPage = () => {
     }
   };
 
-  const onKeyPress = () => {
-    if (state.time.m === 1) {
+  const onKeyPress = (e) => {
+    if (
+      (state.time.m === 1 && e.which >= 65 && e.which <= 90) ||
+      e.which === 13
+    ) {
       dispatch({ type: 'firstTick' });
     }
     submitWords(true);
@@ -152,6 +154,7 @@ export const TestPage = () => {
             wordsComplete={state.wordsComplete}
             inputDisabled={pauseState || finishedState}
             onSubmit={onSubmit}
+            pause={pauseState}
             inputRef={inputRef}
           />
         </div>
