@@ -9,16 +9,21 @@ export const Input = ({
   disabled,
   onKeyUp,
   inputRef,
+  currentWord,
 }) => (
-  <input
-    type="text"
-    aria-label={ariaLabel}
-    className="input"
-    maxLength={maxLength}
-    disabled={disabled}
-    onKeyUp={onKeyUp}
-    ref={inputRef}
-  />
+  <div className="inputblock">
+    <input
+      type="text"
+      aria-label={ariaLabel}
+      className="inputblock__input"
+      maxLength={maxLength}
+      disabled={disabled}
+      onKeyUp={onKeyUp}
+      onClick={() => inputRef.current.focus()}
+      ref={inputRef}
+    />
+    <span className="inputblock__current">{currentWord}</span>
+  </div>
 );
 
 Input.propTypes = {
@@ -27,4 +32,5 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   disabled: PropTypes.bool,
   inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  currentWord: PropTypes.string,
 };

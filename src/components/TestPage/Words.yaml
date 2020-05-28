@@ -60,6 +60,270 @@ wordsToDo:
   - answer: na
     hiragana: な
     id: 20
-  - answer: wa
+  - id: 21
+    hiragana: に
+    answer: ni
+  - id: 22
+    hiragana: ぬ
+    answer: nu
+  - id: 23
+    hiragana: ね
+    answer: ne
+  - id: 24
+    hiragana: の
+    answer: no
+  - id: 25
+    hiragana: は
+    answer: ha
+  - id: 26
+    hiragana: ひ
+    answer: hi
+  - id: 27
+    hiragana: ふ
+    answer: fu
+  - id: 28
+    hiragana: へ
+    answer: he
+  - id: 29
+    hiragana: ほ
+    answer: ho
+  - id: 30
+    hiragana: ま
+    answer: ma
+  - id: 31
+    hiragana: み
+    answer: mi
+  - id: 32
+    hiragana: む
+    answer: mu
+  - id: 33
+    hiragana: め
+    answer: me
+  - id: 34
+    hiragana: も
+    answer: mo
+  - id: 35
+    hiragana: や
+    answer: ya
+  - id: 36
+    hiragana: ゆ
+    answer: yu
+  - id: 37
+    hiragana: よ
+    answer: yo
+  - id: 38
+    hiragana: ら
+    answer: ra
+  - id: 39
+    hiragana: り
+    answer: ri
+  - id: 40
+    hiragana: る
+    answer: ru
+  - id: 41
+    hiragana: れ
+    answer: re
+  - id: 42
+    hiragana: ろ
+    answer: ro
+  - id: 43
     hiragana: わ
-    id: 21
+    answer: wa
+  - id: 44
+    hiragana: ゐ
+    answer: wi
+  - id: 45
+    hiragana: ゑ
+    answer: we
+  - id: 46
+    hiragana: を
+    answer: wo
+  - id: 47
+    hiragana: ん
+    answer: n
+  - id: 48
+    hiragana: が
+    answer: ga
+  - id: 49
+    hiragana: ぎ
+    answer: gi
+  - id: 50
+    hiragana: ぐ
+    answer: gu
+  - id: 51
+    hiragana: げ
+    answer: ge
+  - id: 52
+    hiragana: ご
+    answer: go
+  - id: 53
+    hiragana: ざ
+    answer: za
+  - id: 54
+    hiragana: じ
+    answer: ji
+  - id: 55
+    hiragana: ず
+    answer: zu
+  - id: 56
+    hiragana: ぜ
+    answer: ze
+  - id: 57
+    hiragana: ぞ
+    answer: zo
+  - id: 58
+    hiragana: だ
+    answer: da
+  - id: 59
+    hiragana: ぢ
+    answer: ji
+  - id: 60
+    hiragana: づ
+    answer: zu
+  - id: 61
+    hiragana: で
+    answer: de
+  - id: 62
+    hiragana: ど
+    answer: do
+  - id: 63
+    hiragana: ば
+    answer: ba
+  - id: 64
+    hiragana: び
+    answer: bi
+  - id: 65
+    hiragana: ぶ
+    answer: bu
+  - id: 66
+    hiragana: べ
+    answer: be
+  - id: 67
+    hiragana: ぼ
+    answer: bo
+  - id: 68
+    hiragana: ぱ
+    answer: pa
+  - id: 69
+    hiragana: ぴ
+    answer: pi
+  - id: 70
+    hiragana: ぷ
+    answer: pu
+  - id: 71
+    hiragana: ぺ
+    answer: pe
+  - id: 72
+    hiragana: ぽ
+    answer: po
+  - id: 73
+    hiragana: ゔ
+    answer: vu
+  # - id: 74
+  #   hiragana: きゃ
+  #   answer: kya
+  # - id: 75
+  #   hiragana: きゅ
+  #   answer: kyu
+  # - id: 76
+  #   hiragana: きょ
+  #   answer: kyo
+  # - id: 77
+  #   hiragana: しゃ
+  #   answer: sha
+  # - id: 78
+  #   hiragana: しゅ
+  #   answer: shu
+  # - id: 79
+  #   hiragana: しょ
+  #   answer: sho
+  # - id: 80
+  #   hiragana: ちゃ
+  #   answer: cha
+  # - id: 81
+  #   hiragana: ちゅ
+  #   answer: chu
+  # - id: 82
+  #   hiragana: ちょ
+  #   answer: cho
+  # - id: 83
+  #   hiragana: にゃ
+  #   answer: nya
+  # - id: 84
+  #   hiragana: にゅ
+  #   answer: nyu
+  # - id: 85
+  #   hiragana: にょ
+  #   answer: nyo
+  # - id: 86
+  #   hiragana: ひゃ
+  #   answer: hya
+  # - id: 87
+  #   hiragana: ひゅ
+  #   answer: hyu
+  # - id: 88
+  #   hiragana: ひょ
+  #   answer: hyo
+  # - id: 89
+  #   hiragana: みゃ
+  #   answer: mya
+  # - id: 90
+  #   hiragana: みゅ
+  #   answer: myu
+  # - id: 91
+  #   hiragana: みょ
+  #   answer: myo
+  # - id: 92
+  #   hiragana: りゃ
+  #   answer: rya
+  # - id: 93
+  #   hiragana: りゅ
+  #   answer: ryu
+  # - id: 94
+  #   hiragana: りょ
+  #   answer: ryo
+  # - id: 95
+  #   hiragana: ぎゃ
+  #   answer: gya
+  # - id: 96
+  #   hiragana: ぎゅ
+  #   answer: gyu
+  # - id: 97
+  #   hiragana: ぎょ
+  #   answer: gyo
+  # - id: 98
+  #   hiragana: じゃ
+  #   answer: ja
+  # - id: 99
+  #   hiragana: じゅ
+  #   answer: ju
+  # - id: 100
+  #   hiragana: じょ
+  #   answer: jo
+  # - id: 101
+  #   hiragana: ぢゃ
+  #   answer: ja
+  # - id: 102
+  #   hiragana: ぢゅ
+  #   answer: ju
+  # - id: 103
+  #   hiragana: ぢょ
+  #   answer: jo
+  # - id: 104
+  #   hiragana: びゃ
+  #   answer: bya
+  # - id: 105
+  #   hiragana: びゅ
+  #   answer: byu
+  # - id: 106
+  #   hiragana: にょ
+  #   answer: byo
+  # - id: 107
+  #   hiragana: ぴゃ
+  #   answer: pya
+  # - id: 108
+  #   hiragana: ぴゅ
+  #   answer: pyu
+  # - id: 109
+  #   hiragana: ぴょ
+  #   answer: pyo

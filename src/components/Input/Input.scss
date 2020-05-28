@@ -1,22 +1,38 @@
 @import '../../sass/utils/variables';
 
-.input {
-  @include text-xl;
-  @include inherit-font;
-  background-color: transparent;
-  border: 0;
-  border-bottom: solid 4px $color--logan;
-  color: $color--sea-foam;
-  cursor: text;
-  max-width: 20rem;
-  text-align: right;
+.inputblock {
+  display: flex;
+  position: relative;
+  width: 25rem;
+  &__input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid 4px #a2a2b6;
+    color: #39adb7;
+    cursor: text;
+    font-family: inherit;
+    font-size: 6rem;
+    font-weight: inherit;
+    letter-spacing: -0.05rem;
+    line-height: inherit;
+    max-width: 25rem;
+    padding-right: 8rem;
+    text-align: right;
+    width: 100%;
+    z-index: 1;
 
-  &:focus {
-    border-color: $color--sea-foam;
-    outline: 0;
+    &:focus {
+      border-color: $color--sea-foam;
+      outline: 0;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
-
-  &:disabled {
-    cursor: not-allowed;
+  &__current {
+    color: #39adb7;
+    position: absolute;
+    right: 0;
   }
 }
