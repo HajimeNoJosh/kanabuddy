@@ -12,7 +12,7 @@ export const InputBlock = ({
   onSubmit,
   inputDisabled,
   inputRef,
-  pause,
+  isPaused,
 }) => {
   let todoJsx;
   let completeJsx;
@@ -61,7 +61,7 @@ export const InputBlock = ({
   }
   return (
     <>
-      {pause ? (
+      {isPaused ? (
         <div className="block">
           <div className="block__paused"> Test Paused </div>
         </div>
@@ -98,5 +98,5 @@ InputBlock.propTypes = {
   onSubmit: PropTypes.func,
   inputDisabled: PropTypes.bool,
   inputRef: PropTypes.object,
-  pause: PropTypes.bool,
+  isPaused: PropTypes.bool,
 };
