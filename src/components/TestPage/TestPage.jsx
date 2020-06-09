@@ -17,6 +17,7 @@ const initialState = {
   timerId: null,
   wordsToDo: Words.wordsToDo,
   wordsComplete: [],
+  shouldInputFocus: true,
 };
 
 function reducer(state, action) {
@@ -25,11 +26,13 @@ function reducer(state, action) {
       return {
         ...state,
         appState: AppStates.Play,
+        shouldInputFocus: true,
       };
     case 'pause':
       return {
         ...state,
         appState: AppStates.Pause,
+        shouldInputFocus: false,
       };
     case 'finished':
       return {
@@ -66,6 +69,11 @@ function reducer(state, action) {
       };
     case 'reset':
       return { ...initialState };
+    case 'setInputFocusFalse':
+      return {
+        ...state,
+        shouldInputFocus: false,
+      };
     default:
       throw new Error();
   }
@@ -82,13 +90,16 @@ export const TestPage = () => {
   const finishedState = state.appState === AppStates.Finished;
 
   useEffect(() => {
+    if (state.shouldInputFocus) {
+      inputRef.current.focus();
+    }
     if (playState) {
       const id = setInterval(tick, 1000);
       dispatch({ type: 'setTimer', id });
-      inputRef.current.focus();
     } else if (!playState) {
       clearInterval(state.timerId);
     }
+    dispatch({ type: 'setInputFocusFalse' });
     return () => clearInterval(state.timerId);
   }, [state.appState, state.time]);
 
@@ -111,7 +122,7 @@ export const TestPage = () => {
   const onKeyPress = (e) => {
     if (
       (state.time.m === 1 && e.which >= 65 && e.which <= 90) ||
-      e.which === 13
+      (e.which === 13 && state.time.m === 1)
     ) {
       dispatch({ type: 'firstTick' });
     }
@@ -154,7 +165,7 @@ export const TestPage = () => {
             wordsComplete={state.wordsComplete}
             inputDisabled={pauseState || finishedState}
             onSubmit={onSubmit}
-            pause={pauseState}
+            isPaused={pauseState}
             inputRef={inputRef}
           />
         </div>
