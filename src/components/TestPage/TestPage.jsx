@@ -69,7 +69,7 @@ function reducer(state, action) {
       };
     case 'reset':
       return { ...initialState };
-    case 'setIfInputFocus':
+    case 'setInputFocusFalse':
       return {
         ...state,
         shouldInputFocus: false,
@@ -99,7 +99,7 @@ export const TestPage = () => {
     } else if (!playState) {
       clearInterval(state.timerId);
     }
-    dispatch({ type: 'setIfInputFocus' });
+    dispatch({ type: 'setInputFocusFalse' });
     return () => clearInterval(state.timerId);
   }, [state.appState, state.time]);
 
