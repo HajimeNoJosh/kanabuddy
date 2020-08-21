@@ -6,11 +6,11 @@ import { Timer } from '../Timer/Timer';
 
 import './Scaffold.scss';
 
-export const Scaffold = ({ children, minutes, seconds }) => (
+export const Scaffold = ({ children, minutes, seconds, variant }) => (
   <div className="scaffold">
     <header className="scaffold__header">
       <Logo fill="default" size="md"></Logo>
-      <Timer minutes={minutes} seconds={seconds}></Timer>
+      {variant === 'TestPage' && <Timer minutes={minutes} seconds={seconds} />}
     </header>
     <main className="scaffold__main">{children}</main>
     <footer className="scaffold__footer">
@@ -23,4 +23,5 @@ Scaffold.propTypes = {
   children: PropTypes.node,
   minutes: PropTypes.number,
   seconds: PropTypes.number,
+  variant: PropTypes.string,
 };
