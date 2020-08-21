@@ -9,8 +9,7 @@
 
   &__circle {
     display: block;
-    height: 65em;
-    width: 65rem;
+    width: 63rem;
     path:not(:first-child) {
       transition: stroke-dashoffset 3s linear;
     }

@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
+import { Accuracy } from '../Accuracy/Accuracy';
 import { HomePageText } from './HomePageText';
 
 import './HomePage.scss';
 
-export const HomePage = ({ variant }) => {
+export const HomePage = ({ variant, accuracy }) => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -22,6 +23,7 @@ export const HomePage = ({ variant }) => {
         <div className="homepage__content">
           <div className="homepage__text">
             {variant === 'homepage' && <HomePageText />}
+            {variant === 'finalpage' && <Accuracy accuracy={accuracy} />}
             <Button
               aria-label="start-test-button"
               variant="primary"
@@ -37,4 +39,5 @@ export const HomePage = ({ variant }) => {
 
 HomePage.propTypes = {
   variant: PropTypes.string,
+  accuracy: PropTypes.number,
 };
