@@ -1,11 +1,15 @@
 @import '../../sass/utils/variables';
 .homepage {
   background-image: linear-gradient(to bottom right, #39adb7, #18184c);
+  height: 100vh;
+  width: 100vw;
   &__content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10rem;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  &__text {
+    text-align: center;
   }
   &__title {
     @include text-lg;
