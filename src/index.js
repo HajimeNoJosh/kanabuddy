@@ -12,7 +12,7 @@ const App = () => (
         <TestPage />;
       </Route>
       <Route exact path="/">
-        <HomePage />
+        <HomePage variant="homepage" />
       </Route>
     </Switch>
   </Router>

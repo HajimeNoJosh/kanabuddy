@@ -1,12 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
+import { HomePageText } from './HomePageText';
 
 import './HomePage.scss';
 
-export const HomePage = () => {
+export const HomePage = ({ variant }) => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -19,10 +21,7 @@ export const HomePage = () => {
       <Scaffold color="white" fill="white" variant="HomePage">
         <div className="homepage__content">
           <div className="homepage__text">
-            <div className="homepage__title">Hiragana Typing Test</div>
-            <div className="homepage__subtitle">
-              Test how many kana you can identify and type in one minute
-            </div>
+            {variant === 'homepage' && <HomePageText />}
             <Button
               aria-label="start-test-button"
               variant="primary"
@@ -34,4 +33,8 @@ export const HomePage = () => {
       </Scaffold>
     </div>
   );
+};
+
+HomePage.propTypes = {
+  variant: PropTypes.string,
 };
