@@ -6,7 +6,7 @@ import { Tooltip } from '../Tooltip/Tooltip';
 
 import './GithubLink.scss';
 
-const GithubLink = ({ isTooltipShown }) => {
+const GithubLink = ({ isTooltipShown, color }) => {
   const [isShown, setIsShown] = useState(isTooltipShown);
   const setTooltipVisibility = (isVisible) => {
     if (!isTooltipShown) {
@@ -41,7 +41,7 @@ const GithubLink = ({ isTooltipShown }) => {
         className="github__link"
         aria-label="github-link"
       >
-        <Icon name="github" color="dusk" size="sm" />
+        <Icon name="github" color={color} size="sm" />
       </a>
     </div>
   );
@@ -49,10 +49,12 @@ const GithubLink = ({ isTooltipShown }) => {
 
 GithubLink.defaultProps = {
   isTooltipShown: false,
+  color: 'dusk',
 };
 
 GithubLink.propTypes = {
   isTooltipShown: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 export default GithubLink;

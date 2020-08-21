@@ -156,7 +156,6 @@ export const TestPage = () => {
       <div className="instructions">
         Type the kana using Romaji as accurately as you can
       </div>
-
       <div className="test">
         <div className="test__input">
           <InputBlock
