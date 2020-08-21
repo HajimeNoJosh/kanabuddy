@@ -1,6 +1,6 @@
 import React from 'react';
 import { number } from '@storybook/addon-knobs';
-import Timer from './Timer.jsx';
+import { Timer } from './Timer';
 
 export default {
   title: 'Timer',
