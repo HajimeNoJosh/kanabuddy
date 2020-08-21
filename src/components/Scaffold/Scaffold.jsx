@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Logo } from '../Logo/Logo';
 import GithubLink from '../GithubLink/GithubLink';
-import Timer from '../Timer/Timer';
+import { Timer } from '../Timer/Timer';
 
 import './Scaffold.scss';
 

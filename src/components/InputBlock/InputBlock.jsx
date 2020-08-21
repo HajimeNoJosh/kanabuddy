@@ -66,7 +66,7 @@ export const InputBlock = ({
           <div className="block__paused"> Test Paused </div>
         </div>
       ) : (
-        <div className="block">
+        <div className="block notranslate">
           <div className="block__column block--completed">
             <div className="block__textBox">{completeJsx}</div>
           </div>
