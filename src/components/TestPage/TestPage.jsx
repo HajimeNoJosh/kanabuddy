@@ -1,85 +1,17 @@
 import React, { useEffect, useRef, useReducer } from 'react';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { AppStates } from '../../app/states';
 import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
 import { InputBlock } from '../InputBlock/InputBlock';
-
-import Words from './Words.yaml';
 
 import './TestPage.scss';
 
 const compareTwo = (first, second) =>
   first.toLowerCase() === second.toLowerCase();
 
-const initialState = {
-  time: { m: 1, s: 0 },
-  appState: AppStates.Initial,
-  timerId: null,
-  wordsToDo: Words.wordsToDo,
-  wordsComplete: [],
-  shouldInputFocus: true,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'play':
-      return {
-        ...state,
-        appState: AppStates.Play,
-        shouldInputFocus: true,
-      };
-    case 'pause':
-      return {
-        ...state,
-        appState: AppStates.Pause,
-        shouldInputFocus: false,
-      };
-    case 'finished':
-      return {
-        ...state,
-        wordsToDo: null,
-        appState: AppStates.Finished,
-      };
-    case 'submitWordsComplete':
-      return {
-        ...state,
-        wordsComplete: [
-          ...state.wordsComplete,
-          { ...state.wordsToDo[0], isCorrect: action.isCorrect },
-        ],
-        wordsToDo: [...state.wordsToDo.slice(1)],
-      };
-    case 'setTimer':
-      return { ...state, timerId: action.id };
-    case 'firstTick':
-      return {
-        ...state,
-        time: { m: 0, s: 59 },
-        appState: AppStates.Play,
-      };
-    case 'ticks':
-      return {
-        ...state,
-        time: { ...state.time, s: action.newSecond },
-      };
-    case 'finalTick':
-      return {
-        ...state,
-        appState: AppStates.Finished,
-      };
-    case 'reset':
-      return { ...initialState };
-    case 'setInputFocusFalse':
-      return {
-        ...state,
-        shouldInputFocus: false,
-      };
-    default:
-      throw new Error();
-  }
-}
-
-export const TestPage = () => {
+export const TestPage = ({ reducer, initialState }) => {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
   const inputRef = useRef();
@@ -88,6 +20,9 @@ export const TestPage = () => {
   const playState = state.appState === AppStates.Play;
   const pauseState = state.appState === AppStates.Pause;
   const finishedState = state.appState === AppStates.Finished;
+  const history = useHistory();
+
+  const path = '/final';
 
   useEffect(() => {
     if (state.shouldInputFocus) {
@@ -107,11 +42,34 @@ export const TestPage = () => {
     clearInterval(state.timerId);
     dispatch({ type: 'reset' });
   };
+  const calcAccuracy = () => {
+    let howManyTrue = 0;
+    state.wordsComplete.forEach((element) => {
+      if (element.isCorrect) {
+        howManyTrue += 1;
+      }
+    });
+    if (state.wordsComplete.length === 0) {
+      return 0;
+    }
+    const wordsLength = state.wordsComplete.length;
+    return Math.floor((howManyTrue / wordsLength) * 100);
+  };
+
+  const doRouting = () => {
+    history.replace({
+      pathname: path,
+      state: {
+        howAccurate: calcAccuracy(),
+      },
+    });
+  };
 
   const tick = () => {
     if (state.time.m === 0 && state.time.s === 0) {
       clearInterval(state.timerId);
       dispatch({ type: 'finalTick' });
+      doRouting();
     } else {
       const newSecond = state.time.s - 1;
 
@@ -212,4 +170,9 @@ export const TestPage = () => {
       </div>
     </Scaffold>
   );
+};
+
+TestPage.propTypes = {
+  reducer: PropTypes.func,
+  initialState: PropTypes.object,
 };

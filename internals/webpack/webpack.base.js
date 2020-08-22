@@ -14,6 +14,11 @@ module.exports = (options) => ({
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index_bundle.js',
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
