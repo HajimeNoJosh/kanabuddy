@@ -1,0 +1,16 @@
+@import '../../sass/utils/variables';
+
+.cardbackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  width: 7rem;
+  border-radius: 1rem;
+  &--red {
+    background-color: $color--amaranth;
+  }
+  &--blue {
+    background-color: $color--oyster-bay;
+  }
+}
