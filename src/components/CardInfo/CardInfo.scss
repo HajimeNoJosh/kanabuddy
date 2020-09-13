@@ -1,3 +1,11 @@
+@import '../../sass/utils/variables';
+
 .info {
   text-align: center;
+  &--white {
+    color: $color--white;
+    &--romaji {
+      text-decoration: line-through;
+    }
+  }
 }

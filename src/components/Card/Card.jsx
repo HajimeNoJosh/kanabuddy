@@ -14,7 +14,7 @@ export const Card = ({ textcolor, romaji, kana, color }) => (
 
 Card.propTypes = {
   romaji: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.bool,
   kana: PropTypes.string,
-  textcolor: PropTypes.string,
+  textcolor: PropTypes.bool,
 };

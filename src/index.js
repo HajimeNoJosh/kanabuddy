@@ -44,7 +44,11 @@ function reducer(state, action) {
         ...state,
         wordsComplete: [
           ...state.wordsComplete,
-          { ...state.wordsToDo[0], isCorrect: action.isCorrect },
+          {
+            ...state.wordsToDo[0],
+            isCorrect: action.currentWord.isCorrect,
+            value: action.currentWord.value,
+          },
         ],
         wordsToDo: [...state.wordsToDo.slice(1)],
       };
@@ -82,13 +86,17 @@ const App = () => (
   <Router>
     <Switch>
       <Route path="/final">
-        <FinalPage variant="finalpage" />;
+        <FinalPage variant="finalpage" />
       </Route>
       <Route path="/test">
-        <TestPage initialState={initialState} reducer={reducer} />;
+        <TestPage initialState={initialState} reducer={reducer} />
       </Route>
       <Route path="/">
-        <HomePage variant="homepage" />
+        <HomePage
+          aria="start-test-button"
+          text="Start Test"
+          variant="homepage"
+        />
       </Route>
     </Switch>
   </Router>

@@ -1,12 +1,12 @@
 @import '../../sass/utils/variables';
 
 .cardbackground {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  display: flex;
   height: 10rem;
+  justify-content: center;
   width: 7rem;
-  border-radius: 1rem;
   &--red {
     background-color: $color--amaranth;
   }

@@ -28,6 +28,5 @@ export const Default = () => {
     xs: 'xs',
   };
   const kana = options('Size', kanaSelect, 'sm', { display: 'select' });
-
-  return <CardInfo color={color} romaji={romaji} kana={kana} />;
+  return <CardInfo textcolor={color} romaji={romaji} kana={kana} />;
 };

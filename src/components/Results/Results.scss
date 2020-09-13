@@ -1,0 +1,29 @@
+@import '../../sass/utils/variables';
+.results {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15rem;
+  margin-bottom: 10rem;
+
+  &__paragraph {
+    max-width: 30%;
+  }
+
+  &__items {
+    display: flex;
+    align-items: flex-end;
+    max-width: 30%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  &__answer {
+    display: flex;
+    justify-content: center;
+    background-color: $color--coral;
+    height: 7rem;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: -1.5rem;
+  }
+}

@@ -9,7 +9,7 @@ import { HomePageText } from './HomePageText';
 
 import './HomePage.scss';
 
-export const HomePage = ({ variant, accuracy }) => {
+export const HomePage = ({ children, variant, accuracy, aria, text }) => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -25,13 +25,14 @@ export const HomePage = ({ variant, accuracy }) => {
             {variant === 'homepage' && <HomePageText />}
             {variant === 'finalpage' && <Accuracy accuracy={accuracy} />}
             <Button
-              aria-label="start-test-button"
+              aria-label={aria}
               variant="primary"
-              text="Start Test"
+              text={text}
               onClick={routeChange}
             />
           </div>
         </div>
+        {children}
       </Scaffold>
     </div>
   );
@@ -40,4 +41,7 @@ export const HomePage = ({ variant, accuracy }) => {
 HomePage.propTypes = {
   variant: PropTypes.string,
   accuracy: PropTypes.number,
+  aria: PropTypes.string,
+  text: PropTypes.string,
+  children: PropTypes.node,
 };

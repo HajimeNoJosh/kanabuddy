@@ -4,15 +4,18 @@ import classnames from 'classnames';
 
 import './CardInfo.scss';
 
-export const CardInfo = ({ textcolor, romaji, kana }) => (
-  <div className={classnames('info', `info--${textcolor}`)}>
-    <div>{romaji}</div>
-    <div>{kana}</div>
-  </div>
-);
+export const CardInfo = ({ textcolor, romaji, kana }) => {
+  const color = textcolor ? 'blue' : 'white';
+  return (
+    <div className={classnames('info', `info--${color}`)}>
+      <div className={classnames(`info--${color}--romaji`)}>{romaji}</div>
+      <div>{kana}</div>
+    </div>
+  );
+};
 
 CardInfo.propTypes = {
-  textcolor: PropTypes.string,
+  textcolor: PropTypes.bool,
   romaji: PropTypes.string,
   kana: PropTypes.string,
 };

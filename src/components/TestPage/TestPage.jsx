@@ -61,6 +61,7 @@ export const TestPage = ({ reducer, initialState }) => {
       pathname: path,
       state: {
         howAccurate: calcAccuracy(),
+        wordsComplete: state.wordsComplete,
       },
     });
   };
@@ -100,7 +101,11 @@ export const TestPage = ({ reducer, initialState }) => {
     if (isPartialSubmit && !isAnswerCorrect) {
       return;
     }
-    dispatch({ type: 'submitWordsComplete', isCorrect: isAnswerCorrect });
+    const currentWord = {
+      isCorrect: isAnswerCorrect,
+      value: inputRef.current.value,
+    };
+    dispatch({ type: 'submitWordsComplete', currentWord });
 
     if (state.wordsToDo.length === 1) {
       dispatch({ type: 'finished' });

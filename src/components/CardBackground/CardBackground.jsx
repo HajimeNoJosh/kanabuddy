@@ -4,13 +4,18 @@ import classnames from 'classnames';
 
 import './CardBackground.scss';
 
-export const CardBackground = ({ children, color }) => (
-  <div className={classnames('CardBackground', `CardBackground__${color}`)}>
-    {children}
-  </div>
-);
+export const CardBackground = ({ children, color }) => {
+  const background = color ? 'blue' : 'red';
+  return (
+    <div
+      className={classnames('cardbackground', `cardbackground--${background}`)}
+    >
+      {children}
+    </div>
+  );
+};
 
 CardBackground.propTypes = {
   children: PropTypes.node,
-  color: PropTypes.string,
+  color: PropTypes.bool,
 };
