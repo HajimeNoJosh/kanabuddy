@@ -57,7 +57,7 @@ function reducer(state, action) {
     case 'firstTick':
       return {
         ...state,
-        time: { m: 0, s: 5 },
+        time: { m: 0, s: 59 },
         appState: AppStates.Play,
       };
     case 'ticks':

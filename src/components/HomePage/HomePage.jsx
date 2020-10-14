@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import { Scaffold } from '../Scaffold/Scaffold';
 import { Button } from '../Button/Button';
@@ -18,7 +19,7 @@ export const HomePage = ({ children, variant, accuracy, aria, text }) => {
   };
 
   return (
-    <div className="homepage">
+    <div className={classnames('homepage', `homepage--${variant}`)}>
       <Scaffold color="white" fill="white" variant="HomePage">
         <div className="homepage__content">
           <div className="homepage__text">

@@ -8,7 +8,7 @@ import { Results } from '../Results/Results';
 export const FinalPage = ({ variant }) => {
   const history = useHistory();
   return (
-    <div className="homepage">
+    <div className="homepage-final">
       <HomePage
         aria="play-again-test-button"
         text="Play Again"

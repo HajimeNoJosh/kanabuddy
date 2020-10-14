@@ -7,7 +7,7 @@ import './CardInfo.scss';
 export const CardInfo = ({ textcolor, romaji, kana }) => {
   const color = textcolor ? 'blue' : 'white';
   return (
-    <div className={classnames('info', `info--${color}`)}>
+    <div className={classnames('info', 'notranslate', `info--${color}`)}>
       <div className={classnames(`info--${color}--romaji`)}>{romaji}</div>
       <div>{kana}</div>
     </div>

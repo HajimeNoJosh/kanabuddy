@@ -35,7 +35,7 @@ export const Results = ({ wordsComplete }) => {
         test. Any kana you did not reach does not affect your score. We
         recommend that you study your hiragana charts again and retake the test
       </div>
-      <div className="results__items"> {items}</div>
+      <div className="results__items">{items}</div>
     </div>
   );
 };
