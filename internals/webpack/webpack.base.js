@@ -59,6 +59,5 @@ module.exports = (options) => ({
     ],
   },
   devServer: options.devServer,
-
   plugins: options.plugins.concat(plugins),
 });
