@@ -6,6 +6,7 @@ module.exports = require('./webpack.base')({
   devServer: {
     port: 3000,
     contentBase: path.join(process.cwd(), 'dist/'),
+    historyApiFallback: true,
   },
   plugins,
 });

@@ -1,0 +1,25 @@
+@import '../../sass/utils/variables';
+.homepage {
+  background-image: linear-gradient(to bottom right, #39adb7, #18184c);
+  height: 100vh;
+  width: 100vw;
+  &__content {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  &__text {
+    text-align: center;
+  }
+  &__title {
+    @include text-lg;
+    font-weight: $font-weight--bold;
+    color: $color--white;
+    margin-bottom: 5rem;
+  }
+  &__subtitle {
+    @include text-xs;
+    color: $color--white;
+    margin-bottom: 10rem;
+  }
+}
