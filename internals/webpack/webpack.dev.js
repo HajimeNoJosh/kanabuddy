@@ -7,7 +7,6 @@ module.exports = require('./webpack.base')({
   devServer: {
     hot: true,
     port: 3000,
-    historyApiFallback: true,
   },
   plugins,
 });

@@ -152,10 +152,11 @@ export const TestPage = () => {
   };
 
   return (
-    <Scaffold variant="TestPage" minutes={state.time.m} seconds={state.time.s}>
+    <Scaffold minutes={state.time.m} seconds={state.time.s}>
       <div className="instructions">
         Type the kana using Romaji as accurately as you can
       </div>
+
       <div className="test">
         <div className="test__input">
           <InputBlock

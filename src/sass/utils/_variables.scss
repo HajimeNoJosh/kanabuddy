@@ -82,10 +82,3 @@ $space--xxl: 18rem;
   font-weight: inherit;
   line-height: inherit;
 }
-
-@mixin score {
-  font-family: $font-family--primary;
-  font-size: $font-size--xxl;
-  font-weight: $font-weight--bold;
-  letter-spacing: $font-space--xxl;
-}
