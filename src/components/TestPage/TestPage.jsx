@@ -109,6 +109,7 @@ export const TestPage = ({ reducer, initialState }) => {
 
     if (state.wordsToDo.length === 1) {
       dispatch({ type: 'finished' });
+      doRouting();
     }
 
     inputRef.current.value = '';
